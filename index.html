@@ -174,7 +174,7 @@ img.pf{width:38px;height:auto}
 <div id="bgf"><b></b></div><button id="nb">📅 Новинки</button><aside id="nw"><h3>Скоро в кино</h3><div id="nwl"></div><div id="nwd"></div><small id="nws"></small></aside>
 <nav id="bar"><button id="pv" title="Предыдущая мелодия">‹</button><span id="tn">Музыка</span><button id="nx" title="Следующая мелодия">›</button><button id="mu" title="Звук вкл/выкл">♪</button><button id="fb" title="Избранное">★</button><button id="am" title="Достижения">🏅</button></nav>
 <main>
-<section id="home" class="pg on"><div id="tvs"></div><h1>Фандомия</h1><p class="sub">твой медиамир</p><a id="web" href="https://grkoshara.github.io/fandomia/" target="_blank" rel="noopener">🌐 Браузерная версия</a><small id="webn">Здесь всё работает корректно</small><p class="hint">↓ там кто-то спит</p></section>
+<section id="home" class="pg on"><div id="tvs"></div><h1>Фандомия</h1><p class="sub">твой медиамир</p><a id="web" href="https://grkoshara.github.io/fandomia/" target="_blank" rel="noopener">🌐 Браузерная версия</a><small id="webn">↑ Здесь всё работает корректно</small><p class="hint">↓ там кто-то спит</p></section>
 <section id="film" class="pg"><button class="btn bk" data-go="home">← На главную</button><h2>Случайный фильм</h2><div class="row"><select id="fmd"></select><select id="fgn"></select><select id="fyr"></select><select id="frt"></select></div><div id="fc" class="card"></div><div class="row"><button class="btn" id="fg">Выбрать другой фильм</button><button class="btn" id="ff">★ В избранное</button></div></section>
 <section id="pred" class="pg"><button class="btn bk" data-go="home">← На главную</button><h2>Предсказание дня</h2><div id="sc" class="screen"><div id="pop">🍿</div><p id="pt" class="hw">Нажми на попкорн, чтобы узнать, что приготовил тебе этот день</p></div><p id="prm" class="m"></p><div class="row"><button class="btn" id="pf">★ В избранное</button><button class="btn" id="psh">📤 Поделиться</button></div></section>
 <section id="luck" class="pg"><button class="btn bk" data-go="home">← На главную</button><h2>Копилка удачи</h2><p class="m">Собери максимально удачи или наслаждайся той что есть..</p><div id="lv">0</div><div id="fx"></div><button class="btn" id="lb">Копить удачу</button><button class="btn" id="xb" style="display:none">🍀 Обменять 100к удачи на кулон для совы</button><p id="jl"></p><p id="rc"></p><p id="ach"></p></section>
@@ -1057,4 +1057,10 @@ function guEnd(win,q){guShow('guEnd');const n=gu.done;
 $('#guGo').onclick=guStart;$('#guAg').onclick=guStart;$('#guOk').onclick=guSubmit;$('#guNx').onclick=guNext;
 $('#guIn').addEventListener('keydown',e=>{if(e.key=='Enter'){e.preventDefault();$('#guNx').style.display!='none'?guNext():guSubmit()}});
 
+
+/* Кнопка «Браузерная версия»: показать ссылку и скопировать в один клик */
+$('#web').addEventListener('click',e=>{e.preventDefault();const u=$('#web').href;
+ dlg('Вставь в свой браузер','<span style="word-break:break-all;user-select:all;-webkit-user-select:all;color:var(--g)">'+u+'</span>',
+ [['📋 Копировать ссылку',()=>{const ok=()=>toast('Ссылка скопирована ✓'),fb=()=>{const t=document.createElement('textarea');t.value=u;t.style.cssText='position:fixed;opacity:0';document.body.append(t);t.select();try{document.execCommand('copy');ok()}catch(x){toast('Выдели ссылку и скопируй вручную')}t.remove()};
+ try{navigator.clipboard.writeText(u).then(ok,fb)}catch(x){fb()}}],['Закрыть']])});
 </script></body></html>
